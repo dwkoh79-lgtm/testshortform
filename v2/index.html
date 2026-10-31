@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<title>雪の湯宿 — 니가타 료칸의 겨울</title>
+<style>
+  :root { --paper: #efece5; --ink: #2a2826; --muted: #6d6860; --seal: #b0372b; }
+  @media (prefers-color-scheme: dark) { :root { --paper: #1c1b19; --ink: #e9e5dc; --muted: #9a958c; } }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--paper); color: var(--ink); font-family: "Noto Sans JP", system-ui, sans-serif;
+         min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px 16px; gap: 20px; }
+  h1 { font-weight: 300; letter-spacing: .3em; font-size: clamp(22px, 4vw, 34px); }
+  h1 span { display: inline-block; background: var(--seal); color: #f6efe6; font-size: .55em; font-weight: 700;
+            padding: 2px 6px; border-radius: 3px; letter-spacing: 0; vertical-align: middle; margin-left: .4em; }
+  .stage { position: relative; width: min(100%, 1100px); }
+  video { display: block; width: 100%; aspect-ratio: 16 / 9; border: 1px solid rgba(128,128,128,.35); background: #efece5; }
+  #play { position: absolute; inset: 0; margin: auto; width: 96px; height: 96px; border-radius: 50%; border: 0; cursor: pointer;
+          background: rgba(42,40,38,.75); color: #fff; font-size: 38px; display: none; }
+  p { color: var(--muted); font-size: 14px; letter-spacing: .1em; text-align: center; }
+  a { color: inherit; }
+</style>
+</head>
+<body>
+  <h1>雪の湯宿<span>静</span></h1>
+  <div class="stage">
+    <video id="v" controls autoplay muted loop playsinline preload="auto" poster="../poster.jpg">
+      <source src="../niigata-ryokan-v2.mp4" type="video/mp4" />
+    </video>
+    <button id="play" aria-label="재생">▶</button>
+  </div>
+  <p>新潟 · 冬 — HyperFrames 라인 드로잉 · 30초 · 무음<br />
+     재생이 안 되면 <a href="../niigata-ryokan-v2.mp4">영상 파일 바로 열기</a></p>
+  <script>
+    const v = document.getElementById("v"), b = document.getElementById("play");
+    const show = () => { b.style.display = v.paused ? "block" : "none"; };
+    b.onclick = () => { v.muted = true; v.play().catch(() => {}); };
+    v.addEventListener("play", show); v.addEventListener("pause", show);
+    v.play().catch(show);
+    setTimeout(show, 1500);
+  </script>
+</body>
+</html>
