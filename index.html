@@ -1,72 +1,25 @@
 <!doctype html>
-<html
-  lang="ja"
-  data-composition-variables='[{"id":"title","type":"string","label":"Title","default":"雪の湯宿"},{"id":"subtitle","type":"string","label":"Subtitle","default":"新潟 · 冬"},{"id":"washi","type":"color","label":"Paper","default":"#efece5"},{"id":"ink","type":"color","label":"Ink","default":"#2a2826"}]'
->
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=1920, height=1080" />
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
-    <style>
-      :root {
-        --washi: #efece5;
-        --ink: #2a2826;
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        margin: 0;
-        width: 1920px;
-        height: 1080px;
-        overflow: hidden;
-        background: var(--washi);
-      }
-      #root {
-        width: 100%;
-        height: 100%;
-        position: relative;
-      }
-    </style>
-  </head>
-  <body>
-    <div data-hf-id="hf-j7pz"
-      id="root"
-      data-composition-id="main"
-      data-start="0"
-      data-duration="30"
-      data-width="1920"
-      data-height="1080"
-    >
-      <div data-hf-id="hf-ifzm"
-        id="ryokan"
-        data-composition-id="ryokan"
-        data-composition-src="compositions/ryokan.html"
-        data-start="0"
-        data-duration="30"
-        data-track-index="1"
-        data-track-kind="graphics"
-        data-width="1920"
-        data-height="1080"
-      ></div>
-      <audio data-hf-id="hf-6fs0"
-        id="bgm"
-        data-hidden="true"
-        class="clip"
-        src="assets/bgm/track.wav"
-        data-start="0"
-        data-duration="30"
-        data-track-index="2"
-        data-volume="0.9"
-        data-fade-in="2"
-        data-fade-out="3"
-      ></audio>
-    </div>
-    <script>
-      window.__timelines["main"] = gsap.timeline({ paused: true });
-    </script>
-  </body>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>雪の湯宿 — 니가타 료칸의 겨울</title>
+<style>
+  :root { --paper: #efece5; --ink: #2a2826; --muted: #6d6860; --seal: #b0372b; }
+  @media (prefers-color-scheme: dark) { :root { --paper: #1c1b19; --ink: #e9e5dc; --muted: #9a958c; } }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--paper); color: var(--ink); font-family: "Noto Sans JP", system-ui, sans-serif;
+         min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px 16px; gap: 20px; }
+  h1 { font-weight: 300; letter-spacing: .3em; font-size: clamp(22px, 4vw, 34px); }
+  h1 span { display: inline-block; background: var(--seal); color: #f6efe6; font-size: .55em; font-weight: 700;
+            padding: 2px 6px; border-radius: 3px; letter-spacing: 0; vertical-align: middle; margin-left: .4em; }
+  video { width: min(100%, 1100px); aspect-ratio: 16 / 9; border: 1px solid color-mix(in srgb, var(--ink) 25%, transparent); background: #efece5; }
+  p { color: var(--muted); font-size: 14px; letter-spacing: .1em; }
+</style>
+</head>
+<body>
+  <h1>雪の湯宿<span>静</span></h1>
+  <video src="niigata-ryokan.mp4" controls autoplay muted loop playsinline></video>
+  <p>新潟 · 冬 — HyperFrames 라인 드로잉 · 30초</p>
+</body>
 </html>
