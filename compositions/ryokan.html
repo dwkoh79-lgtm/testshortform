@@ -1,0 +1,361 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: var(--washi, #efece5);
+    }
+    #ry-cam {
+      position: absolute;
+      inset: 0;
+      transform-origin: 50% 62%;
+    }
+    #ry-cam svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .ink {
+      fill: none;
+      stroke: var(--ink, #2a2826);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 1 2;
+      stroke-dashoffset: 1;
+    }
+    .ink.thin { stroke-width: 1.6; }
+    .ink.far { stroke: #a6a197; stroke-width: 2; }
+    .ink.mid { stroke: #8a857c; stroke-width: 2.2; }
+    .ink.paper { fill: var(--washi, #efece5); fill-opacity: 0; }
+    .ink.water { fill: #e5e2db; fill-opacity: 0; }
+    .paperfill { fill: var(--washi, #efece5); opacity: 0; }
+    .snowcap {
+      fill: #fbfaf7;
+      stroke: var(--ink, #2a2826);
+      stroke-width: 1.6;
+      stroke-linejoin: round;
+    }
+    .glow { fill: #e8b46a; }
+    .steam {
+      fill: none;
+      stroke: #9d988f;
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+    .flake {
+      fill: #ffffff;
+      stroke: rgba(60, 56, 50, 0.28);
+      stroke-width: 0.8;
+    }
+    #ry-title {
+      position: absolute;
+      left: 200px;
+      top: 118px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      font-family: "Noto Sans JP", sans-serif;
+      color: var(--ink, #2a2826);
+      writing-mode: vertical-rl;
+    }
+    #ry-title-main {
+      font-size: 58px;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+    }
+    #ry-title-sub {
+      font-size: 24px;
+      font-weight: 300;
+      letter-spacing: 0.4em;
+      margin-top: 30px;
+      color: #6d6860;
+    }
+    #ry-seal {
+      position: absolute;
+      left: 195px;
+      top: 384px;
+      width: 38px;
+      height: 38px;
+      font-size: 23px;
+      background: #b0372b;
+      border-radius: 4px;
+      color: #f6efe6;
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #ry-fade {
+      position: absolute;
+      inset: 0;
+      background: var(--washi, #efece5);
+      opacity: 0;
+    }
+  </style>
+
+  <div data-hf-id="hf-iw0b" id="root" data-composition-id="ryokan" data-width="1920" data-height="1080">
+    <div data-hf-id="hf-skal" id="ry-cam" data-layout-ignore>
+      <svg data-hf-id="hf-38zu" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+        <defs data-hf-id="hf-mh0t">
+          <linearGradient data-hf-id="hf-222x" id="ry-sky" x1="0" y1="0" x2="0" y2="1">
+            <stop data-hf-id="hf-xukx" offset="0" stop-color="#d8d5ce" />
+            <stop data-hf-id="hf-n47e" offset="0.62" stop-color="#eeebe4" />
+            <stop data-hf-id="hf-8urm" offset="1" stop-color="#f4f2ed" />
+          </linearGradient>
+        </defs>
+        <rect data-hf-id="hf-yvoi" x="-100" y="-100" width="2120" height="1280" fill="url(#ry-sky)" />
+
+        <!-- distant mountains -->
+        <path data-hf-id="hf-e9z0" class="ink far" pathLength="1" data-draw="0.4,4"
+          d="M -40 520 Q 150 430 300 470 Q 420 380 560 300 Q 640 258 720 330 Q 820 420 980 400 Q 1120 340 1250 360 Q 1420 250 1560 228 Q 1660 258 1760 340 Q 1850 380 1960 360" />
+        <path data-hf-id="hf-j0k6" class="ink far thin" pathLength="1" data-draw="2.6,2"
+          d="M 600 292 L 622 318 M 640 276 L 652 306 M 1540 240 L 1556 270 M 1580 236 L 1590 262" />
+        <path data-hf-id="hf-5h6j" class="ink mid" pathLength="1" data-draw="1.4,4"
+          d="M -40 640 Q 180 570 380 600 Q 560 540 760 580 Q 900 610 1060 575 Q 1300 520 1520 570 Q 1720 610 1960 560" />
+        <!-- snowy ground -->
+        <path data-hf-id="hf-av7u" class="ink mid" pathLength="1" data-draw="2.2,3.5"
+          d="M -40 712 Q 600 690 960 700 Q 1400 708 1960 690" />
+        <rect data-hf-id="hf-hi9f" x="-100" y="712" width="2120" height="500" fill="#f5f3ee" />
+        <path data-hf-id="hf-17si" class="ink thin" pathLength="1" data-draw="3,3"
+          d="M -40 712 Q 600 690 960 700 Q 1400 708 1960 690" style="stroke:#b9b4ab" />
+
+        <g data-hf-id="hf-f7m8" id="ry-back-snow"></g>
+
+        <!-- ryokan -->
+        <g data-hf-id="hf-p2cv" id="ry-house">
+          <rect data-hf-id="hf-bl9p" class="paperfill" data-fill="3.6,2" x="940" y="455" width="580" height="218" />
+          <rect data-hf-id="hf-gyxb" class="glow ry-glow" x="965" y="490" width="115" height="110" opacity="0" />
+          <rect data-hf-id="hf-5t94" class="glow ry-glow" x="1110" y="490" width="115" height="110" opacity="0" />
+          <rect data-hf-id="hf-j3ze" class="glow ry-glow" x="1255" y="490" width="115" height="110" opacity="0" />
+          <rect data-hf-id="hf-1gsr" class="glow ry-glow" x="1400" y="490" width="105" height="110" opacity="0" />
+          <path data-hf-id="hf-tkur" class="ink" pathLength="1" data-draw="3.6,2.4"
+            d="M 940 650 L 940 455 M 1520 455 L 1520 650" />
+          <path data-hf-id="hf-p26k" class="ink" pathLength="1" data-draw="4.4,2"
+            d="M 1095 466 L 1095 650 M 1240 466 L 1240 650 M 1385 466 L 1385 650" />
+          <g data-hf-id="hf-xjig" id="ry-windows"></g>
+          <path data-hf-id="hf-o02e" class="ink" pathLength="1" data-draw="5.2,2" d="M 912 655 L 1548 655" />
+          <path data-hf-id="hf-7gdv" class="ink thin" pathLength="1" data-draw="5.8,1.6" d="M 960 673 L 1500 673 M 990 673 L 990 688 M 1470 673 L 1470 688" />
+          <!-- roof -->
+          <path data-hf-id="hf-evga" class="ink paper" pathLength="1" data-draw="2.8,3"
+            d="M 870 452 Q 905 446 935 432 L 1065 308 L 1395 308 L 1525 432 Q 1555 446 1590 452 Q 1230 472 870 452 Z" />
+          <path data-hf-id="hf-y4zy" class="ink" pathLength="1" data-draw="3.4,1.6" d="M 1048 304 L 1412 304" style="stroke-width:5" />
+          <path data-hf-id="hf-54cc" class="ink thin" pathLength="1" data-draw="4,1.6" d="M 882 458 Q 1230 478 1578 458" />
+          <!-- hanging lantern -->
+          <path data-hf-id="hf-6hh2" class="ink thin" pathLength="1" data-draw="6,1" d="M 912 460 L 912 478" />
+          <ellipse data-hf-id="hf-sjyk" class="glow ry-glow" cx="912" cy="500" rx="13" ry="19" opacity="0" />
+          <ellipse data-hf-id="hf-y7ni" class="ink thin" pathLength="1" data-draw="6.2,1.2" cx="912" cy="500" rx="14" ry="20" />
+          <path data-hf-id="hf-y8s4" class="ink thin" pathLength="1" data-draw="6.4,1" d="M 899 492 L 925 492 M 898 508 L 926 508" />
+        </g>
+
+        <!-- bamboo fence -->
+        <g data-hf-id="hf-e6vg" id="ry-fence"></g>
+
+        <!-- stone lantern (toro) -->
+        <g data-hf-id="hf-2djf" id="ry-toro">
+          <rect data-hf-id="hf-q9eb" class="ink paper" pathLength="1" data-draw="5.4,1.2" x="255" y="760" width="90" height="18" />
+          <rect data-hf-id="hf-or4k" class="ink paper" pathLength="1" data-draw="5.6,1.2" x="285" y="680" width="30" height="80" />
+          <path data-hf-id="hf-5uwz" class="ink paper" pathLength="1" data-draw="5.8,1.2" d="M 255 680 L 345 680 L 335 665 L 265 665 Z" />
+          <rect data-hf-id="hf-8ck0" class="ink paper" pathLength="1" data-draw="6,1.2" x="268" y="600" width="64" height="65" />
+          <rect data-hf-id="hf-unk7" class="glow ry-glow" x="286" y="616" width="28" height="30" opacity="0" />
+          <rect data-hf-id="hf-c02n" class="ink thin" pathLength="1" data-draw="6.2,1" x="285" y="615" width="30" height="32" />
+          <circle data-hf-id="hf-pmsd" class="ink paper" pathLength="1" data-draw="6.4,1" cx="300" cy="552" r="9" />
+          <path data-hf-id="hf-rt5n" class="ink paper" pathLength="1" data-draw="6.4,1.4"
+            d="M 225 600 Q 260 590 280 568 L 320 568 Q 340 590 375 600 Q 300 608 225 600 Z" />
+        </g>
+
+        <!-- pine -->
+        <g data-hf-id="hf-skxb" id="ry-pine">
+          <path data-hf-id="hf-0alj" class="ink" pathLength="1" data-draw="4.6,2.4" style="stroke-width:5"
+            d="M 1772 1010 Q 1744 830 1786 700 Q 1816 600 1764 470" />
+          <path data-hf-id="hf-9xvu" class="ink thin" pathLength="1" data-draw="5.6,1.4" d="M 1790 640 Q 1810 615 1836 606 M 1778 690 Q 1740 676 1716 668 M 1772 520 Q 1740 506 1720 500" />
+          <path data-hf-id="hf-v69x" class="ink paper" pathLength="1" data-draw="6.2,1.6" d="M 1630 500 Q 1660 460 1720 462 Q 1780 460 1810 500 Q 1720 518 1630 500 Z" />
+          <path data-hf-id="hf-ahmr" class="ink paper" pathLength="1" data-draw="6.6,1.6" d="M 1740 606 Q 1770 566 1830 568 Q 1890 566 1920 606 Q 1830 624 1740 606 Z" />
+          <path data-hf-id="hf-k9l3" class="ink paper" pathLength="1" data-draw="7,1.6" d="M 1620 668 Q 1650 630 1710 632 Q 1770 630 1800 668 Q 1710 686 1620 668 Z" />
+        </g>
+
+        <!-- rotenburo -->
+        <g data-hf-id="hf-tqba" id="ry-bath">
+          <path data-hf-id="hf-gz95" class="ink water" pathLength="1" data-draw="6.4,2.6"
+            d="M 470 880 Q 520 810 760 805 Q 1040 800 1120 860 Q 1160 930 1000 960 Q 760 990 560 960 Q 430 935 470 880 Z" />
+          <path data-hf-id="hf-4eey" class="ink thin" pathLength="1" data-draw="8.4,1.6" style="stroke:#8f8a81"
+            d="M 600 885 Q 650 878 700 885 M 820 902 Q 880 894 940 902 M 690 935 Q 730 929 770 935 M 900 860 Q 940 855 980 860" />
+          <g data-hf-id="hf-avrv" id="ry-steam"></g>
+          <g data-hf-id="hf-lm1t" id="ry-rocks"></g>
+        </g>
+
+        <!-- snow that has settled -->
+        <g data-hf-id="hf-jdea" id="ry-caps" opacity="0">
+          <path data-hf-id="hf-qv59" class="snowcap"
+            d="M 938 430 Q 1000 372 1062 300 Q 1230 286 1398 300 Q 1460 372 1522 430 Q 1490 418 1460 422 Q 1400 410 1340 424 Q 1280 412 1230 422 Q 1170 410 1110 424 Q 1050 412 1000 422 Q 965 418 938 430 Z" />
+          <path data-hf-id="hf-mwg8" class="snowcap" d="M 230 597 Q 262 584 282 560 Q 300 548 318 560 Q 338 584 370 597 Q 330 588 300 591 Q 270 588 230 597 Z" />
+          <path data-hf-id="hf-ycug" class="snowcap" d="M 1638 494 Q 1668 454 1720 454 Q 1772 454 1802 494 Q 1720 478 1638 494 Z" />
+          <path data-hf-id="hf-ojr7" class="snowcap" d="M 1748 600 Q 1778 560 1830 560 Q 1882 560 1912 600 Q 1830 584 1748 600 Z" />
+          <path data-hf-id="hf-23jl" class="snowcap" d="M 1628 662 Q 1658 624 1710 624 Q 1762 624 1792 662 Q 1710 646 1628 662 Z" />
+          <g data-hf-id="hf-4vvd" id="ry-rockcaps"></g>
+          <path data-hf-id="hf-lxy5" class="snowcap" id="ry-fencecap" d="" />
+        </g>
+
+        <g data-hf-id="hf-8y1q" id="ry-front-snow"></g>
+      </svg>
+    </div>
+
+    <div data-hf-id="hf-96tn" id="ry-title">
+      <div data-hf-id="hf-qqdq" id="ry-title-main" data-var-text="title">雪の湯宿</div>
+      <div data-hf-id="hf-0phl" id="ry-title-sub" data-var-text="subtitle">新潟 · 冬</div>
+    </div>
+    <div data-hf-id="hf-t9oj" id="ry-seal">静</div>
+    <div data-hf-id="hf-2qe1" id="ry-fade"></div>
+  </div>
+
+  <script>
+    (function () {
+      const NS = "http://www.w3.org/2000/svg";
+      const mk = (parent, tag, attrs) => {
+        const el = document.createElementNS(NS, tag);
+        for (const k in attrs) el.setAttribute(k, attrs[k]);
+        parent.appendChild(el);
+        return el;
+      };
+      // seeded PRNG so every render is identical
+      let seed = 20261031;
+      const rand = () => {
+        seed = (seed * 1664525 + 1013904223) >>> 0;
+        return seed / 4294967296;
+      };
+
+      // shoji lattice
+      const win = document.getElementById("ry-windows");
+      [[965, 115], [1110, 115], [1255, 115], [1400, 105]].forEach(([x, w], i) => {
+        const t = 4.8 + i * 0.35;
+        mk(win, "rect", { class: "ink thin", pathLength: 1, "data-draw": `${t},1.4`, x, y: 490, width: w, height: 110 });
+        let d = "";
+        for (let k = 1; k < 3; k++) d += `M ${x + (w * k) / 3} 490 L ${x + (w * k) / 3} 600 `;
+        for (let k = 1; k < 4; k++) d += `M ${x} ${490 + 27.5 * k} L ${x + w} ${490 + 27.5 * k} `;
+        mk(win, "path", { class: "ink thin", pathLength: 1, "data-draw": `${t + 0.6},1.6`, d, style: "stroke-width:1.2" });
+      });
+
+      // bamboo fence
+      const fence = document.getElementById("ry-fence");
+      let posts = "";
+      for (let x = 1180; x <= 1560; x += 13) posts += `M ${x} ${700 + (x % 3)} L ${x} 768 `;
+      mk(fence, "rect", { class: "paperfill", "data-fill": "7,1.6", x: 1180, y: 700, width: 380, height: 68 });
+      mk(fence, "path", { class: "ink thin", pathLength: 1, "data-draw": "7.2,2.2", d: posts, style: "stroke-width:1.4" });
+      mk(fence, "path", { class: "ink", pathLength: 1, "data-draw": "7,1.6", d: "M 1170 714 L 1570 714 M 1170 752 L 1570 752", style: "stroke-width:2.4" });
+      document.getElementById("ry-fencecap").setAttribute(
+        "d",
+        "M 1174 704 Q 1220 688 1280 696 Q 1340 686 1400 696 Q 1460 688 1520 696 Q 1550 692 1566 704 Q 1370 712 1174 704 Z"
+      );
+
+      // rocks around the bath
+      const rocks = document.getElementById("ry-rocks");
+      const caps = document.getElementById("ry-rockcaps");
+      const R = [
+        [560, 815, 120, 60], [700, 796, 140, 54], [860, 792, 130, 50], [1000, 806, 120, 56],
+        [470, 870, 110, 70], [1110, 842, 110, 70], [1150, 925, 104, 72], [440, 955, 124, 72],
+        [1036, 982, 150, 62], [600, 1000, 130, 56],
+      ];
+      R.forEach(([cx, cy, w, h], i) => {
+        const d =
+          `M ${cx - w / 2} ${cy + h / 2} Q ${cx - w / 2 - 6} ${cy - h / 4} ${cx - w / 5} ${cy - h / 2} ` +
+          `Q ${cx + w / 4} ${cy - h / 2 - 6} ${cx + w / 2} ${cy - h / 6} Q ${cx + w / 2 + 6} ${cy + h / 3} ${cx + w / 3} ${cy + h / 2} Z`;
+        mk(rocks, "path", { class: "ink paper", pathLength: 1, "data-draw": `${7 + i * 0.22},1.4`, d });
+        mk(rocks, "path", {
+          class: "ink thin", pathLength: 1, "data-draw": `${7.6 + i * 0.22},1`,
+          d: `M ${cx - w / 8} ${cy - h / 6} Q ${cx} ${cy + h / 8} ${cx + w / 6} ${cy + h / 4}`,
+        });
+        mk(caps, "path", {
+          class: "snowcap",
+          d:
+            `M ${cx - w / 2 + 6} ${cy - h / 8} Q ${cx - w / 5} ${cy - h / 2 - 5} ${cx + w / 5} ${cy - h / 2 - 6} ` +
+            `Q ${cx + w / 2} ${cy - h / 3} ${cx + w / 2 - 2} ${cy - h / 10} Q ${cx} ${cy - h / 4} ${cx - w / 2 + 6} ${cy - h / 8} Z`,
+        });
+      });
+
+      // steam wisps
+      const steamG = document.getElementById("ry-steam");
+      const steam = [600, 690, 780, 870, 960, 1050].map((x, i) => {
+        const p = mk(steamG, "path", {
+          class: "steam",
+          d: "M 0 0 C -16 -30 16 -60 0 -90 C -16 -120 14 -150 0 -180",
+          opacity: 0,
+        });
+        return { el: p, x, y: 900 - (i % 2) * 30, ph: rand(), per: 5.5 + rand() * 2 };
+      });
+
+      // falling snow: positions are a pure function of time t
+      const flakes = [];
+      const addFlakes = (g, n, rMin, rMax, vMin, vMax) => {
+        for (let i = 0; i < n; i++) {
+          const r = rMin + rand() * (rMax - rMin);
+          flakes.push({
+            el: mk(g, "circle", { class: "flake", r: r.toFixed(2), cx: 0, cy: 0 }),
+            x0: rand() * 2000 - 40, y0: rand() * 1200, v: vMin + rand() * (vMax - vMin),
+            amp: 10 + rand() * 30, w: 0.3 + rand() * 0.6, ph: rand() * 6.28,
+          });
+        }
+      };
+      addFlakes(document.getElementById("ry-back-snow"), 110, 1.2, 2.6, 28, 48);
+      addFlakes(document.getElementById("ry-front-snow"), 70, 2.8, 5.2, 55, 90);
+
+      const clamp = (v) => Math.max(0, Math.min(1, v));
+      const render = (t) => {
+        const snowIn = clamp(t / 2.5);
+        for (const f of flakes) {
+          const y = ((f.y0 + t * f.v) % 1200) - 60;
+          const x = f.x0 + Math.sin(t * f.w + f.ph) * f.amp;
+          f.el.setAttribute("transform", `translate(${x.toFixed(1)} ${y.toFixed(1)})`);
+          f.el.setAttribute("opacity", snowIn.toFixed(3));
+        }
+        const steamIn = clamp((t - 9.5) / 3);
+        for (const s of steam) {
+          const u = (t / s.per + s.ph) % 1;
+          const op = Math.sin(Math.PI * u) * 0.6 * steamIn;
+          const sx = 0.8 + u * 0.6;
+          s.el.setAttribute(
+            "transform",
+            `translate(${(s.x + Math.sin(u * 3 + s.ph * 6) * 8).toFixed(1)} ${(s.y - u * 120).toFixed(1)}) scale(${sx.toFixed(3)} 1)`
+          );
+          s.el.setAttribute("opacity", op.toFixed(3));
+        }
+      };
+
+      const tl = gsap.timeline({ paused: true });
+
+      // line drawing: each stroke reveals over its own [start, duration]
+      document.querySelectorAll('#root [data-draw]').forEach((el) => {
+        const [s, d] = el.getAttribute("data-draw").split(",").map(Number);
+        tl.fromTo(el, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power1.inOut" }, s);
+        if (el.matches(".paper, .water"))
+          tl.fromTo(el, { fillOpacity: 0 }, { fillOpacity: 1, duration: d, ease: "sine.inOut" }, s + d * 0.3);
+      });
+      document.querySelectorAll('#root [data-fill]').forEach((el) => {
+        const [s, d] = el.getAttribute("data-fill").split(",").map(Number);
+        tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: d, ease: "sine.inOut" }, s);
+      });
+
+      tl.fromTo("#ry-caps", { opacity: 0 }, { opacity: 1, duration: 2.4, ease: "sine.inOut" }, 9);
+      tl.fromTo(".ry-glow", { opacity: 0 }, { opacity: 0.55, duration: 3.5, ease: "sine.inOut" }, 10.5);
+
+      tl.fromTo("#ry-title", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 2.6, ease: "sine.out" }, 12.5);
+      tl.fromTo("#ry-seal", { opacity: 0, scale: 1.12 }, { opacity: 1, scale: 1, duration: 1.2, ease: "power2.out" }, 14.2);
+      tl.to(["#ry-title", "#ry-seal"], { opacity: 0, duration: 2, ease: "sine.inOut" }, 24.5);
+
+      // slow camera drift
+      tl.fromTo("#ry-cam", { scale: 1, x: 0 }, { scale: 1.07, x: -24, duration: 30, ease: "sine.inOut" }, 0);
+
+      // snow + steam clock
+      const clock = { t: 0 };
+      tl.fromTo(clock, { t: 0 }, { t: 30, duration: 30, ease: "none", onUpdate: () => render(clock.t) }, 0);
+
+      tl.fromTo("#ry-fade", { opacity: 0 }, { opacity: 1, duration: 2, ease: "sine.inOut" }, 27.9);
+
+      render(0);
+      window.__timelines["ryokan"] = tl;
+    })();
+  </script>
+</template>
